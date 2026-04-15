@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react'; 
-import { PiHeadCircuitThin } from "react-icons/pi";
+import { ImStatsBars2 } from "react-icons/im"; 
 import { useRouter } from 'next/navigation';
 
 const CapacityBuilding = () => {
@@ -8,19 +8,28 @@ const CapacityBuilding = () => {
   const [trainings, setTrainings] = useState([]); 
 
   useEffect(() => {
-    const defaultData = Array(5).fill({
-      description: 'Staff Health and Safety Training',
-      date: '03/12/2022',
-      type: 'Team',
-      duration: '3days',
-      mode: 'Physical',
-      status: 'Completed'
-    });
+    const defaultData = [
+      { description: 'Staff Health and Safety Training', date: '03/12/2022', type: 'Team', duration: '3days', mode: 'Physical', status: 'Completed' },
+      { description: 'Software Development Workshop', date: '10/01/2023', type: 'Individual', duration: '5days', mode: 'Online', status: 'Inprogress' },
+      { description: 'New Employee Orientation', date: '15/02/2023', type: 'Team', duration: '1day', mode: 'Physical', status: 'To-do' },
+    ];
 
     const savedData = JSON.parse(localStorage.getItem('trainings') || '[]');
-    // نضع البيانات الجديدة أولاً ثم الثابتة
     setTrainings([...savedData, ...defaultData]);
   }, []);
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "Completed":
+        return "bg-green-50 text-green-600";
+      case "Inprogress":
+        return "bg-orange-50 text-orange-600";
+      case "To-do":
+        return "bg-gray-100 text-black";
+      default:
+        return "bg-gray-50 text-gray-500";
+    }
+  };
   
   const stats = [
     { label: 'Total training request', value: '350', bgColor: 'bg-[#EBF5FF]', iconColor: 'text-[#3B82F6]' },
@@ -30,70 +39,76 @@ const CapacityBuilding = () => {
   ];
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen font-sans" dir="ltr">
-      {/* الإحصائيات */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+    <div className=" p-0 w-full max-w-[1600px] mx-auto space-y-8" dir="ltr">
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
-          <div key={i} className="bg-white p-6 rounded-2xl shadow-sm flex justify-between items-center border border-gray-100">
+          <div key={i} className="bg-white p-5 rounded-2xl flex justify-between items-center border border-gray-100 transition-colors hover:bg-gray-50">
             <div>
-              <h3 className="text-3xl font-bold text-gray-800">{stat.value}</h3>
-              <p className="text-gray-400 text-sm font-medium mt-1">{stat.label}</p>
+              <h3 className="text-2xl font-bold text-black tracking-tight">{stat.value}</h3>
+              <p className="text-black text-[13px] font-medium mt-0.5">
+                {stat.label}
+              </p>
             </div>
-            <div className={`p-3 rounded-full ${stat.bgColor}`}>
-              <PiHeadCircuitThin className={`${stat.iconColor} text-4xl font-light`} />
+            <div className={`p-3 rounded-xl ${stat.bgColor}`}>
+              <ImStatsBars2 className={`${stat.iconColor} text-lg`} />
             </div>
           </div>
         ))}
       </div>
 
-      {/* زر الطلب الجديد */}
-      <div className="bg-white p-6 rounded-2xl shadow-sm mb-8 flex justify-between items-center border border-gray-100">
-        <h2 className="text-xl font-bold text-gray-800">Training request</h2>
+      <div className="bg-white p-6 rounded-2xl flex justify-between items-center border border-gray-100">
+        <h2 className="text-lg font-bold text-gray-800">Training request</h2>
         <button
           onClick={() => router.push('/capacity-building/request')}
-          className="bg-gradient-to-r from-[#3BA8F6] to-[#2D5EB3] text-white px-10 py-3 rounded-xl font-medium shadow-md hover:opacity-90 active:scale-95 transition-all"
+          className="btn-primary-gradient"
         >
           Make Training Request
         </button>
       </div>
 
-      {/* الجدول */}
-      <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-        <h2 className="text-xl font-bold text-gray-800 mb-6">All Trainings</h2>
+      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+        <div className="p-5 border-b border-gray-50">
+           <h2 className="text-lg font-bold text-gray-800">All Trainings</h2>
+        </div>
+        
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr className="text-gray-400 text-sm">
-                <th className="pb-4 font-semibold px-2">S/N</th>
-                <th className="pb-4 font-semibold px-2">Training Description</th>
-                <th className="pb-4 font-semibold px-2">Start Date</th>
-                <th className="pb-4 font-semibold px-2">Training Type</th>
-                <th className="pb-4 font-semibold px-2">Duration</th>
-                <th className="pb-4 font-semibold px-2">Training Mode</th>
-                <th className="pb-4 font-semibold px-2">Status</th>
-                <th className="pb-4 font-semibold px-2 text-center">Action</th>
+          <table className="w-full text-left table-auto">
+            <thead className="bg-gray-50/40">
+              <tr className="text-gray-700 text-[10px] uppercase tracking-wider font-bold">
+                <th className="py-4 px-4">S/N</th>
+                <th className="py-4 px-4">Training Description</th>
+                <th className="py-4 px-4">Start Date</th>
+                <th className="py-4 px-4">Type</th>
+                <th className="py-4 px-4">Duration</th>
+                <th className="py-4 px-4">Mode</th>
+                <th className="py-4 px-4">Status</th>
+                <th className="py-4 px-4 text-center">Action</th>
               </tr>
             </thead>
-            <tbody className="text-gray-600 text-[14px]">
+            <tbody className="divide-y divide-gray-50 text-[12px] text-gray-500 font-normal">
               {trainings.map((item, index) => (
-                <tr key={index} className="border-t border-gray-50 hover:bg-gray-50/50 transition-colors group">
-                  <td className="py-4 px-2">{String(index + 1).padStart(2, '0')}</td>
-                  <td className="py-4 px-2 font-medium text-gray-800">{item.description}</td>
-                  <td className="py-4 px-2 text-gray-400">{item.date}</td>
-                  <td className="py-4 px-2 text-gray-400">{item.type}</td>
-                  <td className="py-4 px-2 text-gray-400">{item.duration}</td>
-                  <td className="py-4 px-2 text-gray-400">{item.mode}</td>
-                  <td className="py-4 px-2">
-                    <span className={item.status === "Inprogress" || item.status === "In progress" ? "text-orange-400" : item.status === "Completed" ? "text-[#22C55E]" : "text-gray-400"}>
-                      • {item.status}
+                <tr key={index} className="hover:bg-blue-50/10 transition-colors whitespace-nowrap">
+                  <td className="py-4 px-4 font-mono text-[10px] text-gray-400">
+                    {String(index + 1).padStart(2, '0')}
+                  </td>
+                  <td className="py-4 px-4 font-medium text-gray-600">{item.description}</td>
+                  <td className="py-4 px-4">{item.date}</td>
+                  <td className="py-4 px-4">{item.type}</td>
+                  <td className="py-4 px-4">{item.duration}</td>
+                  <td className="py-4 px-4">{item.mode}</td>
+                  <td className="py-4 px-4">
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase ${getStatusColor(item.status)}`}>
+                      <span className="w-1 h-1 rounded-full bg-current"></span>
+                      {item.status}
                     </span>
                   </td>
-                  <td className="py-4 px-2 text-center">
+                  <td className="py-4 px-4 text-center">
                     <button
                       onClick={() => router.push('/capacity-building/details')}
-                      className="text-[#3B82F6] hover:text-blue-700 font-semibold transition-colors underline underline-offset-4"
+                      className="text-[#384295] hover:text-[#14ADD6] font-bold text-[11px] transition-colors"
                     >
-                      View more
+                      View details
                     </button>
                   </td>
                 </tr>
