@@ -126,5 +126,3 @@ const StaffPage = () => {
 };
 
 export default StaffPage;
-
-// final update check
