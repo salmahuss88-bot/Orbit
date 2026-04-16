@@ -104,7 +104,7 @@ const StaffPage = () => {
         </div>
       </div>
 
-      {/* إضافة مكون المودال هنا */}
+
       <SuccessModal 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)} 
@@ -122,3 +122,5 @@ const StaffPage = () => {
 };
 
 export default StaffPage;
+
+// final update check
