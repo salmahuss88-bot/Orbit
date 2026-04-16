@@ -1,11 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react'; 
-import { ImStatsBars2 } from "react-icons/im"; 
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import StatsGrid from '@/app/components/StatsGrid/StatsGrid';
 
 const CapacityBuilding = () => {
   const router = useRouter();
-  const [trainings, setTrainings] = useState([]); 
+  const [trainings, setTrainings] = useState([]);
 
   useEffect(() => {
     const defaultData = [
@@ -30,8 +30,8 @@ const CapacityBuilding = () => {
         return "bg-gray-50 text-gray-500";
     }
   };
-  
-  const stats = [
+
+  const myStats = [
     { label: 'Total training request', value: '350', bgColor: 'bg-[#EBF5FF]', iconColor: 'text-[#3B82F6]' },
     { label: 'Total staff trained', value: '800', bgColor: 'bg-[#FFF4EB]', iconColor: 'text-[#F59E0B]' },
     { label: 'Total training done', value: '300', bgColor: 'bg-[#F5EBFF]', iconColor: 'text-[#8B5CF6]' },
@@ -40,10 +40,17 @@ const CapacityBuilding = () => {
 
   return (
     <div className=" p-0 w-full max-w-[1600px] mx-auto space-y-8" dir="ltr">
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div>
+        <StatsGrid stats={myStats} />
+      </div>
+
+      {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, i) => (
+
           <div key={i} className="bg-white p-12 rounded-2xl flex justify-between items-center border border-gray-100 transition-colors hover:bg-gray-50">
+
+          <div key={i} className="bg-white p-12 text-left rounded-2xl flex justify-between items-center border border-gray-100 transition-colors hover:bg-gray-50">
+
             <div>
               <h3 className="text-2xl font-bold text-black tracking-tight">{stat.value}</h3>
               <p className="text-black text-[13px] font-medium mt-0.5">
@@ -55,7 +62,7 @@ const CapacityBuilding = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       <div className="bg-white p-6 rounded-2xl flex justify-between items-center border border-gray-100">
         <h2 className="text-lg font-bold text-gray-800">Training request</h2>
@@ -69,9 +76,9 @@ const CapacityBuilding = () => {
 
       <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
         <div className="p-5 border-b border-gray-50">
-           <h2 className="text-lg font-bold text-gray-800">All Trainings</h2>
+          <h2 className="text-lg font-bold text-gray-800">All Trainings</h2>
         </div>
-        
+
         <div className="overflow-x-auto">
           <table className="w-full text-left table-auto">
             <thead className="bg-gray-50/40">
