@@ -8,7 +8,6 @@ const TrainingDetails = () => {
   const [status, setStatus] = useState("In progress");
 
   const handleUpdate = () => {
-    
     router.push('/capacity-building');
   };
 
@@ -18,38 +17,38 @@ const TrainingDetails = () => {
   ];
 
   return (
-    <div className="p-8 bg-gray-50 min-h-screen">
-      <button onClick={() => router.back()} className="flex items-center text-[#3BA8F6] mb-8 font-medium">
+    <div className="p-0 bg-gray-50 min-h-screen font-sans">
+      {/* <button onClick={() => router.back()} className="flex items-center text-[#3BA8F6] mb-8 font-medium hover:underline">
         <PiCaretLeftBold size={18} className="mr-1" /> Back
-      </button>
+      </button> */}
 
-      <div className="bg-white rounded-3xl p-10 shadow-sm border border-gray-100 max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold text-gray-800 mb-12">Staff Health and Safety Training</h1>
+      <div className="bg-white rounded-[32px] p-10 border border-gray-100 max-w-7xl mx-auto shadow-none">
+        <h1 className="text-2xl font-extrabold text-gray-800 mb-12">Staff Health and Safety Training</h1>
 
-        <div className="grid grid-cols-4 gap-8 mb-12 border-b border-gray-50 pb-12">
-          <div><p className="text-gray-400 text-sm mb-2">Training type</p><p className="font-bold text-gray-900">Team training</p></div>
-          <div><p className="text-gray-400 text-sm mb-2">Training duration</p><p className="font-bold text-gray-900">3 weeks</p></div>
-          <div><p className="text-gray-400 text-sm mb-2">Training mode</p><p className="font-bold text-gray-900">Physical</p></div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div><p className="text-black text-sm mb-2">Training type</p><p className="font-extrabold text-gray-900">Team training</p></div>
+          <div><p className="text-black text-sm mb-2">Training duration</p><p className="font-extrabold text-gray-900">3 weeks</p></div>
+          <div><p className="text-black text-sm mb-2">Training mode</p><p className="font-extrabold text-gray-900">Physical</p></div>
           <div>
-            <p className="text-gray-400 text-sm mb-2">Training status</p>
-            <p className={`font-bold ${status === 'Completed' ? 'text-green-500' : 'text-orange-400'}`}>{status}</p>
+            <p className="text-black text-sm mb-2">Training status</p>
+            <p className={`font-extrabold ${status === 'Completed' ? 'text-green-500' : 'text-orange-400'}`}>{status}</p>
           </div>
         </div>
 
         <div className="mb-12">
-          <h3 className="font-bold text-gray-900 mb-6 underline decoration-2 underline-offset-8">Training participant</h3>
+          <h3 className=" text-gray-900 mb-6 font-extrabold decoration-2 underline-offset-8">Training participant</h3>
           <ol className="space-y-4">
             {participants.map((name, index) => (
-              <li key={index} className="text-gray-600 flex items-center">
-                <span className="w-6 text-gray-300 font-mono">{index + 1}.</span> {name}
+              <li key={index} className="text-black flex items-center">
+                <span className="w-6 text-black font-mono">{index + 1}.</span> {name}
               </li>
             ))}
           </ol>
         </div>
 
-        <div className="pt-8 border-t border-gray-50 flex items-end gap-4">
+        <div className="flex items-end gap-4">
           <div className="w-64 space-y-2">
-            <p className="text-sm text-gray-500 font-medium">Update status</p>
+            <p className="text-md text-black font-medium">Update status</p>
             <div className="relative">
               <select 
                 value={status}
@@ -63,7 +62,8 @@ const TrainingDetails = () => {
               <PiCaretDownLight className="absolute right-4 top-5 text-gray-400 pointer-events-none" />
             </div>
           </div>
-          <button onClick={handleUpdate} className="bg-gradient-to-r from-[#2B95CE] to-[#2B60B4] text-white px-12 py-4 rounded-2xl font-bold">
+
+          <button onClick={handleUpdate} className="btn-primary-gradient px-12 py-4 shadow-none">
             Update
           </button>
         </div>
