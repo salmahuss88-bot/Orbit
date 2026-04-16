@@ -23,6 +23,10 @@ const StaffPage = () => {
     { id: 'STF-003', name: 'Ahmed Khalid', dept: 'Design', role: 'UI/UX Designer', date: '20/02/2024', status: 'On Leave' },
     { id: 'STF-004', name: 'Sara Mansour', dept: 'HR', role: 'HR Manager', date: '15/03/2023', status: 'Active' },
     { id: 'STF-005', name: 'Fahad Al-Otaibi', dept: 'Finance', role: 'Accountant', date: '01/01/2023', status: 'Remote' },
+    { id: 'STF-002', name: 'Williams Achegbani', dept: 'Operations', role: 'COO', date: '05/11/2022', status: 'Active' },
+    { id: 'STF-003', name: 'Ahmed Khalid', dept: 'Design', role: 'UI/UX Designer', date: '20/02/2024', status: 'On Leave' },
+    { id: 'STF-004', name: 'Sara Mansour', dept: 'HR', role: 'HR Manager', date: '15/03/2023', status: 'Active' },
+    { id: 'STF-005', name: 'Fahad Al-Otaibi', dept: 'Finance', role: 'Accountant', date: '01/01/2023', status: 'Remote' },
   ];
 
   const toggleMenu = () => setIsStaffMenuOpen(!isStaffMenuOpen);
