@@ -23,7 +23,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
         { name: 'Office Budget', icon: <FaMoneyCheckDollar /> },
         { name: 'Stocks and Inventory', icon: <BsFillBagCheckFill /> },
         { name: 'Notifications', icon: <BsFillBellFill /> },
-        { name: 'Capacity Building', icon: <ImStatsBars2 /> },
+        { name: 'capacity-building', icon: <ImStatsBars2 /> },
         { name: 'Procurements', icon: <BsFillBagCheckFill /> },
     ];
 
@@ -54,10 +54,8 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
                 </defs>
             </svg>
 
-            <div className="w-72 shrink-0 h-screen" aria-hidden="true" />
-
-            <aside className="fixed left-0 top-0 w-72 h-screen bg-white border-r border-gray-100 flex flex-col py-10 overflow-y-auto hide-scrollbar z-50">
-                <div className="flex flex-col items-center mb-12 px-8 text-center">
+            <aside className="w-72 h-screen lg:h-auto lg:min-h-screen bg-white border-r border-gray-100 flex flex-col py-10 overflow-y-auto hide-scrollbar">
+                <div className="flex flex-col items-center mb-12 px-8 text-center shrink-0">
                     <div className="w-12 h-12 mb-3 relative">
                         <Image src="/Orbit.svg" alt="Orbit Logo" fill className="object-contain" priority />
                     </div>
@@ -69,11 +67,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
                     <ul className="flex flex-col w-full">
                         {menuItems.map((item) => {
                             const isActive = activeItem === item.name;
-
-                            let linkPath = "/";
-                            if (item.name !== 'Dashboard') {
-                                linkPath = `/${item.name.replace(/\s+/g, '-')}`;
-                            }
+                            let linkPath = item.name === 'Dashboard' ? "/" : `/${item.name.replace(/\s+/g, '-')}`;
 
                             return (
                                 <li key={item.name} className="w-full">
@@ -83,9 +77,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
                                         className="flex items-center px-10 py-3 w-full relative outline-none cursor-pointer group"
                                     >
                                         <div className={`absolute inset-0 bg-[#f4f9ff] transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'}`} />
-
                                         <div className={`absolute left-0 top-0 bottom-0 w-[6px] rounded-r-full transition-all duration-300 ${isActive ? 'bg-gradient-to-b from-[#14ADD6] to-[#384295] opacity-100' : 'opacity-0'}`} />
-
                                         <div className={`flex items-center gap-4 z-10 transition-all duration-300 ${isActive ? 'active-gradient-state active-icon' : 'text-black opacity-70'}`}>
                                             <span className="text-[22px] flex items-center justify-center">
                                                 {item.icon}

@@ -31,7 +31,7 @@ export default function Header({ activePageName }) {
     },
     "Payment Voucher": {
       title: "Payment Voucher",
-      subTitle: "View, search for and add new payment vouchers",
+      subTitle: "Create payment voucher",
       icon: <BsTicketPerforatedFill />
     },
     "Payroll": {
@@ -41,47 +41,47 @@ export default function Header({ activePageName }) {
     },
     "Memo": {
       title: "Memo",
-      subTitle: "View, search for and add new memos",
+      subTitle: "Create and send memos to designated offices.",
       icon: <BsFillFileEarmarkTextFill />
     },
     "Circulars": {
       title: "Circulars",
-      subTitle: "View and add new circulars",
+      subTitle: "Search for and view all circulars",
       icon: <BsFillArchiveFill />
     },
     "Maintenance": {
       title: "Maintenance",
-      subTitle: "Manage maintenance requests",
+      subTitle: "View and create schedule for maintenance",
       icon: <MdSettings />
     },
     "Logistics": {
       title: "Logistics",
-      subTitle: "View and manage logistics and transport",
+      subTitle: "Make and send logistics request.",
       icon: <MdLocalShipping />
     },
     "Office Budget": {
       title: "Office Budget",
-      subTitle: "Track and manage office expenses",
+      subTitle: "View, create and send budget request.",
       icon: <FaMoneyCheckDollar />
     },
     "Stocks and Inventory": {
       title: "Stocks and Inventory",
-      subTitle: "Manage warehouse items and levels",
+      subTitle: "Update stoke and inventory table",
       icon: <BsFillBagCheckFill />
     },
     "Notifications": {
       title: "Notifications",
-      subTitle: "View all system alerts and updates",
+      subTitle: "Read and delete notifications.",
       icon: <BsFillBellFill />
     },
-    "Capacity Building": {
+    "capacity-building": {
       title: "Capacity Building",
-      subTitle: "Staff training and development programs",
+      subTitle: "Create and submit request for staff training",
       icon: <ImStatsBars2 />
     },
     "Procurements": {
       title: "Procurements",
-      subTitle: "View, search for and add new procurements",
+      subTitle: "Request for, and view all requested procurements.",
       icon: <BsFillBagCheckFill />
     }
   };
@@ -107,13 +107,13 @@ export default function Header({ activePageName }) {
         }
       `}</style>
 
-      <div className="flex justify-between items-center mb-10 font-sans w-full">
-        <div>
-          <h1 className="text-[24px] font-bold text-black leading-tight">
+      <div className="flex flex-wrap justify-between items-start lg:items-center mb-6 lg:mb-10 font-sans w-full gap-y-4">
+        <div className="flex-1 min-w-[200px]">
+          <h1 className="text-[20px] lg:text-[24px] font-bold text-black leading-tight">
             <div className="flex flex-col">
-              <span className="flex items-center gap-3">
+              <span className="flex items-center gap-2 lg:gap-3 flex-wrap">
                 {currentPage.icon && (
-                  <span className="text-[28px] flex items-center gradient-icon">
+                  <span className="text-[24px] lg:text-[28px] flex items-center gradient-icon">
                     {currentPage.icon}
                   </span>
                 )}
@@ -124,13 +124,13 @@ export default function Header({ activePageName }) {
                   <img
                     src="/Happy-Emoji-PNG 1.svg"
                     alt="Happy Emoji"
-                    className="w-[24px] h-[24px] object-contain"
+                    className="w-[20px] h-[20px] lg:w-[24px] lg:h-[24px] object-contain"
                   />
                 )}
               </span>
 
               {currentPage.subTitle && (
-                <span className="text-[14px] font-normal text-[#262626] mt-1">
+                <span className="text-[12px] lg:text-[14px] font-normal text-[#262626] mt-1 block">
                   {currentPage.subTitle}
                 </span>
               )}
@@ -138,27 +138,32 @@ export default function Header({ activePageName }) {
           </h1>
         </div>
 
-        <div className="flex items-center gap-0">
-          <div className="relative cursor-pointer p-2">
+        <div className="flex items-center gap-2 lg:gap-4 ml-auto">
+          <div className="relative cursor-pointer p-2 hover:bg-gray-100 rounded-full transition-colors">
             <IoMdNotifications size={24} className="text-black" />
           </div>
 
-          <div className="flex items-center gap-3 relative ml-4">
-            <img src="/Profilepic.svg" className="w-10 h-10 rounded-full object-cover" alt="Profile" />
-            <div className="text-left hidden md:block">
-              <p className="text-[14px] text-black leading-none">Otor John</p>
-              <p className="text-[12px] text-black opacity-50 font-normal mt-1">HR Office</p>
+          <div className="flex items-center gap-2 lg:gap-3 relative">
+            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full overflow-hidden border border-gray-100 shrink-0">
+               <img src="/Profilepic.svg" className="w-full h-full object-cover" alt="Profile" />
             </div>
+            
+            <div className="text-left hidden sm:block">
+              <p className="text-[13px] lg:text-[14px] text-black font-semibold leading-none">Otor John</p>
+              <p className="text-[11px] lg:text-[12px] text-black opacity-50 font-normal mt-1">HR Office</p>
+            </div>
+
             <FiChevronDown
               className={`text-black text-lg cursor-pointer transition-transform duration-300 ${isProfileMenuOpen ? 'rotate-180' : ''}`}
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
             />
+
             {isProfileMenuOpen && (
               <div className="absolute right-0 top-full mt-4 w-48 bg-white rounded-2xl shadow-xl border border-gray-50 py-2 z-50">
                 <ul className="text-black text-[14px]">
                   <li className="px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center gap-3"><FiUser /> Profile</li>
                   <li className="px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center gap-3"><FiSettings /> Settings</li>
-                  <li className="px-4 py-3 hover:bg-red-50 cursor-pointer flex items-center gap-3 "><FiLogOut /> Logout</li>
+                  <li className="px-4 py-3 hover:bg-red-50 cursor-pointer flex items-center gap-3 text-red-600"><FiLogOut /> Logout</li>
                 </ul>
               </div>
             )}
