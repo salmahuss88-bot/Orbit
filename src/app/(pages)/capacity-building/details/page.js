@@ -12,7 +12,7 @@ const TrainingDetails = () => {
   };
 
   const participants = [
-    "Fatima Mohammed", "Ibrahim Bankole", "Otor John Stephen", 
+    "Fatima Mohammed", "Ibrahim Bankole", "Otor John Stephen",
     "Abubakar Alghazali", "Ranky Akab", "Sadiq Lukman"
   ];
 
@@ -47,23 +47,25 @@ const TrainingDetails = () => {
         </div>
 
         <div className="flex items-end gap-4">
-          <div className="w-64 space-y-2">
+          <div className="w-80 space-y-2"> {/* زدنا العرض من w-64 إلى w-80 لجعل الحاوية أطول */}
             <p className="text-md text-black font-medium">Update status</p>
             <div className="relative">
-              <select 
+              <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="w-full p-4 bg-white border border-gray-200 rounded-2xl appearance-none text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-50 transition-all"
+                // التعديلات هنا: h-[46px] للطول، و p-0 مع px-4 لضمان عدم تمدد النص داخلياً
+                className="w-full h-[46px] px-4 bg-white border border-gray-200 rounded-2xl appearance-none text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-50 transition-all"
               >
                 <option value="In progress">In progress</option>
                 <option value="Completed">Completed</option>
                 <option value="To-do">To-do</option>
               </select>
-              <PiCaretDownLight className="absolute right-4 top-5 text-gray-400 pointer-events-none" />
+              {/* تعديل مكان الأيقونة لتبقى في المنتصف عمودياً مع الـ 46px */}
+              <PiCaretDownLight className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
             </div>
           </div>
 
-          <button onClick={handleUpdate} className="btn-primary-gradient px-12 py-4 shadow-none">
+          <button onClick={handleUpdate} className="w-[160px] h-[46px] btn-primary-gradient px-12 py-4 shadow-none ">
             Update
           </button>
         </div>
