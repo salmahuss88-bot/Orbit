@@ -11,9 +11,15 @@ const DataTable = ({
 }) => {
   const tableContainerRef = useRef(null);
 
+  const hideDefaultScrollbar = {
+    msOverflowStyle: 'none',
+    scrollbarWidth: 'none',
+  };
+
   return (
     <div className="flex-1 text-lg max-w-full overflow-hidden w-full">
-      <div className="bg-white rounded-2xl border border-[#E9ECEF] shadow-sm overflow-hidden flex flex-col relative h-[510px] w-full">
+
+      <div className="bg-white rounded-2xl overflow-hidden flex flex-col relative h-[510px] w-full">
         
         <div className="p-4 md:p-6 flex flex-wrap justify-between items-center bg-white z-20 gap-3">
           <h3 className="font-bold text-[14px] md:text-[15px] text-[#1A1C21]">{title}</h3>
@@ -40,10 +46,18 @@ const DataTable = ({
         <div className="relative flex-grow overflow-hidden flex flex-col">
           <div 
             ref={tableContainerRef} 
-            className="h-full overflow-y-auto overflow-x-auto custom-scrollbar-hide px-4 pr-8"
+            className="h-full overflow-y-auto overflow-x-auto md:overflow-x-hidden px-4 md:pr-8 pr-4"
+            style={hideDefaultScrollbar}
           >
+            <style jsx>{`
+              div::-webkit-scrollbar {
+                display: none;
+              }
+            `}</style>
+
             <table className="w-full text-center border-collapse min-w-[800px] md:min-w-full">
-              <thead className="bg-white sticky top-0 z-10 text-[#515151] text-[10px] tracking-widest uppercase font-sans border-b border-[#E9ECEF]">
+
+              <thead className="bg-white sticky top-0 z-10 text-[#515151] text-[10px] tracking-widest uppercase font-sans">
                 <tr>
                   {columns.map((col, index) => (
                     <th key={index} className="px-4 md:px-6 py-4 font-bold whitespace-nowrap">{col}</th>  
@@ -77,7 +91,7 @@ const DataTable = ({
             </table>
           </div>
 
-          <div className="absolute right-2 md:right-4 top-[15px] bottom-2 w-[6px] md:w-[9px] z-30 pointer-events-none">
+          <div className="absolute right-2 md:right-4 top-[15px] bottom-2 w-[6px] md:w-[9px] z-30 pointer-events-none hidden md:block">
             <div className="h-full pointer-events-auto">
               <CustomScrollbar containerRef={tableContainerRef} />
             </div>
