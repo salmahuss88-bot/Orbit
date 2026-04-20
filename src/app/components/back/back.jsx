@@ -7,13 +7,13 @@ const Back = () => {
 
   return (
     <button 
-      onClick={() => router.back()} // تم تغييرها لتعمل كزر رجوع حقيقي، أو اتركها كما كانت setCurrentPage
+      onClick={() => router.back()} 
       className="font-normal flex items-center gap-1.5 md:gap-2 text-base md:text-lg hover:opacity-80 transition-opacity bg-gradient-to-r from-[#2485C1] to-[#20638b] bg-clip-text text-transparent"
       style={{
-        position: 'absolute', // التغيير هنا: absolute بدلاً من fixed
+        position: 'absolute', 
         top: '120px',
         left: '310px',
-        zIndex: 10, // لا نحتاج لـ 9999 طالما أنه ليس عائماً
+        zIndex: 10, 
         margin: 0
       }}
     >
