@@ -18,9 +18,7 @@ const TrainingDetails = () => {
 
   return (
     <div className="p-0 bg-gray-50 min-h-screen font-sans">
-      {/* <button onClick={() => router.back()} className="flex items-center text-[#3BA8F6] mb-8 font-medium hover:underline">
-        <PiCaretLeftBold size={18} className="mr-1" /> Back
-      </button> */}
+
 
       <div className="bg-white rounded-[32px] p-10 border border-gray-100 max-w-7xl mx-auto shadow-none">
         <h1 className="text-2xl font-extrabold text-gray-800 mb-12">Staff Health and Safety Training</h1>
@@ -47,20 +45,18 @@ const TrainingDetails = () => {
         </div>
 
         <div className="flex items-end gap-4">
-          <div className="w-80 space-y-2"> {/* زدنا العرض من w-64 إلى w-80 لجعل الحاوية أطول */}
+          <div className="w-80 space-y-2"> 
             <p className="text-md text-black font-medium">Update status</p>
             <div className="relative">
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                // التعديلات هنا: h-[46px] للطول، و p-0 مع px-4 لضمان عدم تمدد النص داخلياً
                 className="w-full h-[46px] px-4 bg-white border border-gray-200 rounded-2xl appearance-none text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-50 transition-all"
               >
                 <option value="In progress">In progress</option>
                 <option value="Completed">Completed</option>
                 <option value="To-do">To-do</option>
               </select>
-              {/* تعديل مكان الأيقونة لتبقى في المنتصف عمودياً مع الـ 46px */}
               <PiCaretDownLight className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
             </div>
           </div>

@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { PiCaretDownLight } from "react-icons/pi";
 import { IoIosArrowBack } from "react-icons/io";
-// استيراد الكومبوننت الجديد الخاص بك
 import CongratulationsModal from '@/app/components/congratulation/Congrat';
 
 const TrainingRequestPage = () => {
@@ -41,16 +40,13 @@ const TrainingRequestPage = () => {
       status: "In progress"
     };
 
-    // حفظ البيانات في localStorage
     const existingData = JSON.parse(localStorage.getItem('trainings') || '[]');
     localStorage.setItem('trainings', JSON.stringify([newRequest, ...existingData]));
 
-    // تحديث الحالة لإظهار المودال وتمرير الـ ID
     setLastCreatedId(newId);
     setShowModal(true);
   };
 
-  // مكون الاختيار المخصص الداخلي
   const CustomSelect = ({ label, name, options, placeholder, value }) => (
     <div className="space-y-2">
       <label className="text-sm text-black">{label}</label>
@@ -86,7 +82,7 @@ const TrainingRequestPage = () => {
                 placeholder="Enter description"
                 value={formData.description}
                 onChange={handleInputChange}
-                className="w-full p-3.5 border text-sm border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#14ADD6]/20 bg-gray-50/30 text-gray-900 placeholder:text-gray-400 transition-all"
+                className="w-full  p-3.5 border text-sm border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#14ADD6]/20 bg-gray-50/30 text-gray-900 placeholder:text-gray-400 transition-all"
                 required
               />
             </div>
@@ -124,6 +120,7 @@ const TrainingRequestPage = () => {
                     <option value="">Select option</option>
                     <option value="Days">Days</option>
                     <option value="Weeks">Weeks</option>
+                    <option value="Months">Months</option>
                   </select>
                   <PiCaretDownLight className="absolute right-3 top-4 text-gray-400 pointer-events-none" size={16} />
                 </div>
@@ -167,14 +164,13 @@ const TrainingRequestPage = () => {
           </div>
 
           <div className="flex gap-4 pt-10">
-            <button type="submit" className="btn-primary-gradient">
+            <button type="submit" className="btn-primary-gradient w-[250px] h-[46px]">
               Save and Submit
             </button>
 
             <button
               type="button"
               onClick={() => router.back()}
-              // التعديل هنا: أضفنا w-[142px] و h-[46px] وحذفنا الـ padding القديم لضمان الدقة
               className="w-[142px] h-[46px] border-2 border-[#384295] text-[#384295] rounded-xl font-bold hover:bg-gray-50 transition-all active:scale-95 flex items-center justify-center"
             >
               Cancel
@@ -183,7 +179,6 @@ const TrainingRequestPage = () => {
         </form>
       </div>
 
-      {/* استدعاء المودال الخارجي */}
       {showModal && (
         <CongratulationsModal
           isOpen={showModal}

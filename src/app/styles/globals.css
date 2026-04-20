@@ -36,11 +36,8 @@
 
 @layer components {
   .btn-primary-gradient {
-    /* المقاسات المطلوبة */
-    width: 250px;
-    height: 46px;
+
     
-    /* التنسيقات الأساسية */
     background: linear-gradient(to right, var(--btn-gradient-start, #2563eb), var(--btn-gradient-end, #4f46e5));
     @apply text-white py-2 px-8 rounded-xl transition-all border-none shadow-none;
     
@@ -53,7 +50,6 @@
 
 
 
-  /* تأثير عند الضغط */
   .btn-primary-gradient:active {
     @apply scale-95;
   }
