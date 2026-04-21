@@ -1,4 +1,3 @@
-
 const SuccessModal = ({ isOpen, onClose, title, message, buttonText }) => {
     if (!isOpen) return null;
 
@@ -14,12 +13,12 @@ const SuccessModal = ({ isOpen, onClose, title, message, buttonText }) => {
                     />
                 </div>
 
-  
-                <h2 className="text-xl md:text-2xl font-bold text-black mb-3 md:mb-4">
+                <h2 className="text-xl md:text-2xl font-bold text-[#000000] mb-3 md:mb-4">
                     {title || "Congratulations"}
                 </h2>
 
-                <p className="text-gray-500 text-sm md:text-base mb-8 md:mb-10 leading-relaxed px-2 md:px-4">
+               
+                <p className="text-[#000000] text-sm md:text-base mb-8 md:mb-10 leading-relaxed px-2 md:px-4">
                     {message}
                 </p>
 
