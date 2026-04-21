@@ -47,7 +47,7 @@ const StaffPage = () => {
   return (
     <div className="w-full flex flex-col items-center pt-0 gap-6">
 
-      <div className="flex items-center justify-between bg-white rounded-[20px] w-[1060px] h-[130px] px-10 shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-gray-100 mt-4">
+      <div className="flex items-center justify-between bg-white rounded-[20px] w-[1060px] h-[130px] px-10 shadow-[0_4px_20px_rgba(0,0,0,0.02)] border border-gray-100 mt-0">
         <div className="w-[340px] flex flex-col gap-2">
           <label className="text-black text-sm font-semibold ml-1">Quick search a staff</label>
           <div className="relative w-full">
